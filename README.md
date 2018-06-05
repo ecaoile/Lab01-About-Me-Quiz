@@ -1,5 +1,7 @@
 # Lab01-About-Me-Quiz
-CODE: Exception Handling &amp; Debugging
+Author: Earl Jay Caoile
+Version: 1.0.0
+
 
 ## The purpose of the program
 This program is designed to quiz the user on information about me (Earl Jay Caoile). It gives 5 questions, and a few of them allow for multiple attempts. After each question, your total score is given. At the end, a final score is given with an option to play again.
