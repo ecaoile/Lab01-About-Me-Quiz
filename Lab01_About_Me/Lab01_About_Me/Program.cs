@@ -39,6 +39,12 @@ namespace Lab01_About_Me
                 StatesTraveled();
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                CountriesTraveled();
+
+                Console.WriteLine($"\nYour final score: {totalScore}");
+                if (totalScore == 5)
+                    Console.WriteLine("Oh snap! You're a boss!");
+
                 Console.WriteLine("\nWould you like to play again?");
                 string playAgainAns = Console.ReadLine();
 
@@ -66,9 +72,7 @@ namespace Lab01_About_Me
             }
 
             else
-            {
                 return "That's incorrect!";
-            }
         }
 
         public static int MyAge()
@@ -147,9 +151,50 @@ namespace Lab01_About_Me
                 else
                 {
                     Console.WriteLine("That is incorrect!");
+                    Console.WriteLine("Hint: I've been to less than 10 states.");
                     guesses--;
                 }
             }
+        }
+
+        public static void CountriesTraveled()
+        {
+            int guessesLeft = 4;
+            bool isCorrect = false;
+            while (guessesLeft > 0 && isCorrect == false)
+            {
+                Console.WriteLine("\n4. How many countries do you think I've been to?");
+                Console.WriteLine($"You have {guessesLeft} guesses remaining.");
+                string countriesGuess = Console.ReadLine();
+                int countriesGuessNum;
+                bool isNumeric = int.TryParse(countriesGuess, out countriesGuessNum);
+                while (isNumeric == false)
+                {
+                    Console.WriteLine("That was not a valid integer. Please try again.");
+                    countriesGuess = Console.ReadLine();
+                    isNumeric = int.TryParse(countriesGuess, out countriesGuessNum);
+                }
+                countriesGuessNum = Int32.Parse(countriesGuess);
+
+                if (countriesGuessNum < 14)
+                {
+                    Console.WriteLine("Your guess is too low. I've been to more countries than that.");
+                    Console.WriteLine("Please guess again.");
+                    guessesLeft--;
+                }
+                else if (countriesGuessNum > 14)
+                {
+                    Console.WriteLine("Your guess is too high! I haven't traveled that much.");
+                    Console.WriteLine("Please guess again.");
+                    guessesLeft--;
+                }
+                else
+                {
+                    Console.WriteLine("You're correct! I've been to 14 countries.");
+                    totalScore++;
+                    isCorrect = true;
+                }
+            } 
         }
     }
 }
