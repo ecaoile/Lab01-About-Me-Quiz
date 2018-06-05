@@ -36,11 +36,16 @@ namespace Lab01_About_Me
                     totalScore++;
                 Console.WriteLine($"Your current score: {totalScore}");
 
+
+                
                 Console.WriteLine("\nWould you like to play again?");
                 string playAgainAns = Console.ReadLine();
 
                 if (playAgainAns.ToUpper() == "Y" || playAgainAns.ToUpper() == "YES")
+                {
                     playAgain = true;
+                    totalScore = 0;
+                }
                 else
                     playAgain = false;
             } while (playAgain == true);
@@ -83,20 +88,34 @@ namespace Lab01_About_Me
 
         public static bool FromSeattle()
         {
-            Console.WriteLine("\n3. True/false: I\'m from Seattle.");
-            string fromSeattleAns = Console.ReadLine();
-            bool ansBool;
-            if (fromSeattleAns.ToLower() == "false" || fromSeattleAns.ToLower() == "f")
+            bool isTrueOrFalse = false;
+            bool ansBool = true;
+            do
             {
-                Console.WriteLine("That is correct! I'm from Anchorage, Alaska.");
-                ansBool = false;
-            }
-            else
-            {
-                Console.WriteLine("That is incorrect! I\'m not from here.");
-                ansBool = true;
-            }
+                Console.WriteLine("\n3. True/false: I\'m from Seattle.");
+                string fromSeattleAns = Console.ReadLine();
+                if (fromSeattleAns.ToLower() == "false" || fromSeattleAns.ToLower() == "f")
+                {
+                    Console.WriteLine("That is correct! I'm from Anchorage, Alaska.");
+                    ansBool = false;
+                    isTrueOrFalse = true;
+                }
+
+                else if (fromSeattleAns.ToLower() == "true" || fromSeattleAns.ToLower() == "true")
+                {
+                    Console.WriteLine("That is incorrect! I\'m not from here.");
+                    ansBool = true;
+                    isTrueOrFalse = true;
+                }
+    
+                else
+                {
+                    Console.WriteLine("That was not a valid answer. Please try again.");
+                }
+            } while (isTrueOrFalse == false);
             return ansBool;
         }
+
+
     }
 }
