@@ -4,19 +4,24 @@ namespace Lab01_About_Me
 {
     class Program
     {
+        // initializing global variables
         public static short totalScore = 0;
         public static bool playAgain = false;
         static void Main(string[] args)
         {
+            // do-while loop that runs the program at least once
             do
             {
+                // intro message
                 Console.WriteLine("Hello, everyone! Welcome to the C# edition of my About Me Quiz!");
                 Console.WriteLine("I'll give you 5 questions.");
                 Console.WriteLine("Here we go!");
 
+                // asking user what they think my favorite color is
                 Console.WriteLine(FavoriteColor());
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                // asking user what they think my age is
                 int guessedAge = MyAge();
 
                 if (guessedAge == 31)
@@ -31,16 +36,20 @@ namespace Lab01_About_Me
 
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                //asking the user if they think I'm from Seattle
                 bool fromSeattle = FromSeattle();
                 if (fromSeattle == false)
                     totalScore++;
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                // asking user how many states they think I've been to
                 StatesTraveled();
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                // asking user how many countries they think I've been to
                 CountriesTraveled();
 
+                // final score with congratulatory message if user gets all 5 questions right
                 Console.WriteLine($"\nYour final score: {totalScore}");
                 if (totalScore == 5)
                     Console.WriteLine("Oh snap! You're a boss!");
@@ -48,6 +57,7 @@ namespace Lab01_About_Me
                 Console.WriteLine("\nWould you like to play again?");
                 string playAgainAns = Console.ReadLine();
 
+                // asking user if they want to play again
                 if (playAgainAns.ToUpper() == "Y" || playAgainAns.ToUpper() == "YES")
                 {
                     playAgain = true;
