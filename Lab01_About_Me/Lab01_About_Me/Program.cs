@@ -24,9 +24,9 @@ namespace Lab01_About_Me
                     Console.WriteLine("You're correct! I am 31 years old.");
                     totalScore++;
                 }
-                if (guessedAge > 31)
+                else if (guessedAge > 31)
                     Console.WriteLine("Jeez, do you really think I look that old? >:(");
-                if (guessedAge < 31)
+                else
                     Console.WriteLine("You're way too kind, but I\'m not that young.");
 
                 Console.WriteLine($"Your current score: {totalScore}");
@@ -36,8 +36,9 @@ namespace Lab01_About_Me
                     totalScore++;
                 Console.WriteLine($"Your current score: {totalScore}");
 
+                StatesTraveled();
+                Console.WriteLine($"Your current score: {totalScore}");
 
-                
                 Console.WriteLine("\nWould you like to play again?");
                 string playAgainAns = Console.ReadLine();
 
@@ -78,7 +79,7 @@ namespace Lab01_About_Me
             bool isNumeric = int.TryParse(ageGuess, out ageGuessNum);
             while (isNumeric == false)
             {
-                Console.WriteLine("That was not a valid integer. Please guess my age again.");
+                Console.WriteLine("That was not a valid integer. Please try again.");
                 ageGuess = Console.ReadLine();
                 isNumeric = int.TryParse(ageGuess, out ageGuessNum);
             }
@@ -90,9 +91,10 @@ namespace Lab01_About_Me
         {
             bool isTrueOrFalse = false;
             bool ansBool = true;
+
             do
             {
-                Console.WriteLine("\n3. True/false: I\'m from Seattle.");
+                Console.WriteLine("\n3. True/false: I'm from Seattle.");
                 string fromSeattleAns = Console.ReadLine();
                 if (fromSeattleAns.ToLower() == "false" || fromSeattleAns.ToLower() == "f")
                 {
@@ -103,7 +105,7 @@ namespace Lab01_About_Me
 
                 else if (fromSeattleAns.ToLower() == "true" || fromSeattleAns.ToLower() == "true")
                 {
-                    Console.WriteLine("That is incorrect! I\'m not from here.");
+                    Console.WriteLine("That is incorrect! I'm not from here.");
                     ansBool = true;
                     isTrueOrFalse = true;
                 }
@@ -113,9 +115,41 @@ namespace Lab01_About_Me
                     Console.WriteLine("That was not a valid answer. Please try again.");
                 }
             } while (isTrueOrFalse == false);
+
             return ansBool;
         }
 
+        public static void StatesTraveled()
+        {
+            int guesses = 3;
+            bool isCorrect = false;
+            while (guesses > 0 && isCorrect == false)
+            {
+                Console.WriteLine("\n4. How many states do you think I've been to?");
+                Console.WriteLine($"You have {guesses} guesses remaining.");
+                string statesGuess = Console.ReadLine();
+                int statesGuessNum;
+                bool isNumeric = int.TryParse(statesGuess, out statesGuessNum);
+                while (isNumeric == false)
+                {
+                    Console.WriteLine("That was not a valid integer. Please try again.");
+                    statesGuess = Console.ReadLine();
+                    isNumeric = int.TryParse(statesGuess, out statesGuessNum);
+                }
+                statesGuessNum = Int32.Parse(statesGuess);
 
+                if (statesGuessNum == 9)
+                {
+                    Console.WriteLine("You're correct! I've been to 9 states.");
+                    totalScore++;
+                    isCorrect = true;
+                }
+                else
+                {
+                    Console.WriteLine("That is incorrect!");
+                    guesses--;
+                }
+            }
+        }
     }
 }
