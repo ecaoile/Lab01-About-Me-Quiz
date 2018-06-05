@@ -7,7 +7,11 @@ This program is designed to quiz the user on information about me (Earl Jay Caoi
 As an assignment, this lab gave me a opportunity to practice basic C# syntax and get used to creating functions with different return types.
 
 ## How to run the program
-- Clone the repository from GitHub using the link provided at the top right
+- Ensure you have the following installed:
+  - Visual Studio 2017 Community
+  - .NET Core 2.1 RC SDK
+  - Git Bash if running Windows
+- Clone the repository from GitHub to your desired directory using the clone or download link provided at the top right area of the main repository page
 - Open the solution file (found in Lab01-About-Me-Quiz\Lab01_About_Me\Lab01_About_Me.sln)
 - Once the solution file is open in Visual Studio, hit the green play button to run the program
 
